@@ -1,91 +1,113 @@
-import { FiGithub as Github, FiExternalLink as ExternalLink } from 'react-icons/fi';
+import { FiArrowUpRight as ArrowUpRight, FiGithub as Github } from 'react-icons/fi';
 
 const projects = [
   {
-    title: 'Veritas AI — Fake News Detector',
-    description: 'AI-powered misinformation detector using DeBERTa v3. Features Explainable AI (XAI) to show influential words and real-time fact cross-verification.',
-    tech: ['Python', 'Flask', 'HuggingFace', 'Transformers', 'DeBERTa'],
+    title: 'Advance-RIS',
+    category: 'Applied AI · Computer Vision',
+    description:
+      'Research-focused chest X-ray screening with a DenseNet, ResNet, and Swin Transformer ensemble. Includes DICOM workflows, Grad-CAM explanations, uncertainty estimates, and report generation.',
+    tech: ['PyTorch', 'FastAPI', 'React', 'ONNX', 'DICOM'],
+    github: 'https://github.com/Divyansh010605/Advance-RIS',
+    note: 'Research and education project — not for clinical diagnosis.',
+  },
+  {
+    title: 'RAGFlow_Enterprise_AI',
+    category: 'Generative AI · Agentic RAG',
+    description:
+      'A multi-agent knowledge assistant that combines document retrieval with SQL and knowledge-graph queries, returning evidence-grounded responses with citations.',
+    tech: ['FastAPI', 'RAG', 'Qdrant', 'Neo4j', 'Gemini'],
+    github: 'https://github.com/Divyansh010605/RAGFlow_Enterprise_AI',
+  },
+  {
+    title: 'Distributed-Job-Scheduling-Platform',
+    category: 'Backend · Distributed Systems',
+    description:
+      'A distributed job scheduling platform for recurring workloads, with worker heartbeats, retry handling, idempotency, job dependencies, and operational metrics.',
+    tech: ['Java 21', 'Spring Boot', 'Kafka', 'Redis', 'PostgreSQL'],
+    github: 'https://github.com/Divyansh010605/Distributed-Job-Scheduling-Platform',
+  },
+  {
+    title: 'AI-Fake-News-Detection-V2.0',
+    category: 'NLP · Explainable AI',
+    description:
+      'A news verification app that classifies articles with DeBERTa, highlights influential words, and cross-checks claims against reputable sources.',
+    tech: ['Python', 'Flask', 'DeBERTa', 'Hugging Face', 'XAI'],
     github: 'https://github.com/Divyansh010605/AI-Fake-News-Detection-V2.0',
-    demo: '#', // Placeholder if there's no live demo
   },
-  {
-    title: 'Radiology Information System (RIS)',
-    description: 'Full-stack medical imaging platform. Compares Deep Learning diagnostic support between CNNs (DenseNet, ResNet) and Transformer architectures (Swin).',
-    tech: ['React', 'Vite', 'Tailwind', 'FastAPI', 'PyTorch'],
-    github: 'https://github.com/Divyansh010605/RIS',
-    demo: '#',
-  },
-  {
-    title: 'Voice-Controlled AI Agent',
-    description: 'Local AI agent that accepts audio input, transcribes speech with Groq Whisper, classifies intent via Ollama, and executes tools.',
-    tech: ['Python', 'Streamlit', 'Groq API', 'Ollama LLM'],
-    github: 'https://github.com/Divyansh010605/Voice-Controlled-Local-AI-Agent',
-    demo: '#',
-  },
-  {
-    title: 'Binance Futures Trading Bot',
-    description: 'Lightweight Python CLI application for placing orders on the Binance Futures Testnet. Features interactive prompts and structured logging.',
-    tech: ['Python', 'Click', 'Rich', 'Binance API'],
-    github: 'https://github.com/Divyansh010605/Binance-Futures-Testnet-Trading-Bot',
-    demo: '#',
-  }
 ];
 
 export default function Projects() {
   return (
-    <section id="projects" className="py-24 relative">
+    <section id="projects" className="relative py-24 md:py-32">
       <div className="container mx-auto px-6 md:px-12">
-        <div className="mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Featured <span className="text-cyan-400">Projects</span></h2>
-          <div className="h-1 w-20 bg-gradient-to-r from-cyan-400 to-purple-500 rounded-full"></div>
+        <div className="mb-12 flex flex-col justify-between gap-6 md:mb-16 md:flex-row md:items-end">
+          <div>
+            <p className="mb-3 text-sm font-semibold uppercase tracking-[0.24em] text-cyan-400">
+              Selected work
+            </p>
+            <h2 className="text-3xl font-bold text-white md:text-5xl">
+              Projects built to <span className="gradient-text">solve problems.</span>
+            </h2>
+          </div>
+          <a
+            href="https://github.com/Divyansh010605?tab=repositories"
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex w-fit items-center gap-2 text-sm font-medium text-slate-400 transition hover:text-cyan-300"
+          >
+            More on GitHub <ArrowUpRight size={16} />
+          </a>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
           {projects.map((project, index) => (
-            <div key={index} className="glass p-8 rounded-2xl group hover:-translate-y-2 transition-all duration-300 relative overflow-hidden">
-              {/* Subtle hover gradient */}
-              <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-              
-              <div className="relative z-10 flex flex-col h-full">
-                <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors">
-                  {project.title}
-                </h3>
-                <p className="text-slate-400 mb-6 flex-grow">
-                  {project.description}
-                </p>
-                
-                <div className="flex flex-wrap gap-2 mb-8">
-                  {project.tech.map((tech) => (
-                    <span key={tech} className="px-3 py-1 text-xs font-medium bg-slate-800 text-cyan-300 border border-slate-700 rounded-full">
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-                
-                <div className="flex items-center space-x-4 pt-4 border-t border-slate-800 mt-auto">
-                  <a 
-                    href={project.github} 
-                    target="_blank" 
-                    rel="noreferrer"
-                    className="flex items-center text-sm font-medium text-slate-300 hover:text-white transition-colors"
-                  >
-                    <Github size={18} className="mr-2" />
-                    Source
-                  </a>
-                  {project.demo !== '#' && (
-                    <a 
-                      href={project.demo} 
-                      target="_blank" 
-                      rel="noreferrer"
-                      className="flex items-center text-sm font-medium text-cyan-400 hover:text-cyan-300 transition-colors"
-                    >
-                      <ExternalLink size={18} className="mr-2" />
-                      Live Demo
-                    </a>
-                  )}
-                </div>
+            <article
+              key={project.title}
+              className="glass group relative flex h-full flex-col overflow-hidden rounded-2xl p-6 transition duration-300 hover:-translate-y-1 hover:border-cyan-500/40 hover:bg-slate-900/80 md:p-8"
+            >
+              <div className="mb-7 flex items-start justify-between gap-4">
+                <span className="font-mono text-sm text-slate-600">
+                  {String(index + 1).padStart(2, '0')}
+                </span>
+                <span className="rounded-full border border-slate-700/80 bg-slate-800/60 px-3 py-1 text-xs font-medium text-cyan-200">
+                  {project.category}
+                </span>
               </div>
-            </div>
+
+              <h3 className="text-xl font-bold text-white transition-colors group-hover:text-cyan-300 md:text-2xl">
+                {project.title}
+              </h3>
+              <p className="mt-3 flex-grow leading-7 text-slate-400">{project.description}</p>
+
+              <div className="mt-6 flex flex-wrap gap-2">
+                {project.tech.map((tech) => (
+                  <span
+                    key={tech}
+                    className="rounded-md border border-slate-700/70 bg-slate-800/60 px-2.5 py-1 text-xs font-medium text-slate-300"
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
+
+              {project.note && (
+                <p className="mt-4 text-xs leading-5 text-amber-200/70">{project.note}</p>
+              )}
+
+              <div className="mt-7 border-t border-slate-800 pt-5">
+                <a
+                  href={project.github}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-2 text-sm font-semibold text-slate-300 transition hover:text-white"
+                  aria-label={`View ${project.title} source on GitHub`}
+                >
+                  <Github size={17} />
+                  View source
+                  <ArrowUpRight size={15} className="text-slate-500" />
+                </a>
+              </div>
+            </article>
           ))}
         </div>
       </div>

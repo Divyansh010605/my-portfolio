@@ -1,65 +1,86 @@
-import { FiCode as Code2, FiDatabase as Database, FiLayout as Layout, FiTerminal as Terminal } from 'react-icons/fi';
+import {
+  FiCpu as Cpu,
+  FiDatabase as Database,
+  FiLayers as Layers,
+  FiServer as Server,
+} from 'react-icons/fi';
+
+const skillCategories = [
+  {
+    title: 'AI & Computer Vision',
+    icon: <Cpu size={21} className="text-violet-300" />,
+    skills: ['Python', 'PyTorch', 'Transformers', 'Hugging Face', 'ONNX'],
+  },
+  {
+    title: 'Generative AI & RAG',
+    icon: <Layers size={21} className="text-cyan-300" />,
+    skills: ['Agentic RAG', 'Qdrant', 'Neo4j', 'Gemini', 'Retrieval'],
+  },
+  {
+    title: 'Backend & Distributed Systems',
+    icon: <Server size={21} className="text-emerald-300" />,
+    skills: ['FastAPI', 'Spring Boot', 'Kafka', 'Redis', 'Java'],
+  },
+  {
+    title: 'Data & Full-stack',
+    icon: <Database size={21} className="text-orange-300" />,
+    skills: ['PostgreSQL', 'React', 'Docker', 'REST APIs', 'Git'],
+  },
+];
 
 export default function About() {
-  const skillCategories = [
-    {
-      title: "AI & Machine Learning",
-      icon: <Database size={24} className="text-purple-400" />,
-      skills: ["Python", "PyTorch", "HuggingFace", "DeBERTa", "Ollama LLM"]
-    },
-    {
-      title: "Frontend Development",
-      icon: <Layout size={24} className="text-cyan-400" />,
-      skills: ["React.js", "JavaScript", "Tailwind CSS", "Vite", "HTML/CSS"]
-    },
-    {
-      title: "Backend & Systems",
-      icon: <Terminal size={24} className="text-emerald-400" />,
-      skills: ["FastAPI", "Flask", "Node.js", "Binance API", "REST APIs"]
-    },
-    {
-      title: "Tools & Deployment",
-      icon: <Code2 size={24} className="text-orange-400" />,
-      skills: ["Git", "GitHub Actions", "Docker", "Streamlit", "Linux"]
-    }
-  ];
-
   return (
-    <section id="about" className="py-24 bg-slate-900/30">
+    <section id="about" className="border-y border-slate-800/70 bg-slate-900/35 py-24 md:py-32">
       <div className="container mx-auto px-6 md:px-12">
-        <div className="flex flex-col lg:flex-row gap-16">
-          
-          {/* About Text */}
-          <div className="lg:w-1/2">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">About <span className="text-cyan-400">Me</span></h2>
-            <div className="h-1 w-20 bg-gradient-to-r from-cyan-400 to-purple-500 rounded-full mb-8"></div>
-            
-            <div className="space-y-6 text-slate-300 leading-relaxed text-lg">
+        <div className="grid gap-14 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
+          <div>
+            <p className="mb-3 text-sm font-semibold uppercase tracking-[0.24em] text-cyan-400">
+              A little about me
+            </p>
+            <h2 className="text-3xl font-bold text-white md:text-5xl">
+              Curious by nature.
+              <br />
+              <span className="gradient-text">Engineer by practice.</span>
+            </h2>
+            <div className="mt-8 space-y-5 text-base leading-8 text-slate-400 md:text-lg">
               <p>
-                I'm a passionate Full-Stack Developer with a strong focus on Artificial Intelligence and Python backend systems. I specialize in bridging the gap between complex machine learning models and intuitive user interfaces.
+                I&apos;m Divyansh, an AI/ML engineer based in India. I enjoy taking ideas
+                from model experiments to complete products, combining machine learning
+                with thoughtful interfaces and dependable services.
               </p>
               <p>
-                My current focus is on building intelligent, scalable applications—from fake news detection systems utilizing advanced NLP (Transformers) to local voice-controlled AI agents. I enjoy architecture design and exploring how AI can solve real-world problems.
-              </p>
-              <p>
-                When I'm not writing code or training models, I'm usually exploring new tech stacks or looking for my next challenging project. I'm actively seeking opportunities where I can leverage my skills in Python, React, and AI to build impactful products.
+                Lately, I&apos;ve been building agentic retrieval systems, explainable
+                medical-imaging research tools, and distributed backend platforms. I
+                care about making complex systems understandable, useful, and easier to
+                operate.
               </p>
             </div>
+            <a
+              href="https://github.com/Divyansh010605"
+              target="_blank"
+              rel="noreferrer"
+              className="mt-8 inline-flex items-center gap-2 border-b border-cyan-500/50 pb-1 text-sm font-semibold text-cyan-300 transition hover:border-cyan-300 hover:text-cyan-200"
+            >
+              See what I&apos;m building on GitHub
+              <span aria-hidden="true">↗</span>
+            </a>
           </div>
 
-          {/* Skills Grid */}
-          <div className="lg:w-1/2 grid grid-cols-1 sm:grid-cols-2 gap-6 mt-8 lg:mt-0">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             {skillCategories.map((category) => (
-              <div key={category.title} className="glass p-6 rounded-xl border border-slate-700/50">
-                <div className="flex items-center space-x-3 mb-4">
+              <div
+                key={category.title}
+                className="glass rounded-xl p-5 transition-colors hover:border-slate-600 md:p-6"
+              >
+                <div className="mb-5 flex items-center gap-3">
                   {category.icon}
-                  <h3 className="font-semibold text-white">{category.title}</h3>
+                  <h3 className="text-sm font-semibold text-white">{category.title}</h3>
                 </div>
                 <div className="flex flex-wrap gap-2">
                   {category.skills.map((skill) => (
-                    <span 
-                      key={skill} 
-                      className="text-xs font-medium bg-slate-800/80 text-slate-300 px-3 py-1.5 rounded-md hover:text-cyan-300 transition-colors cursor-default"
+                    <span
+                      key={skill}
+                      className="rounded-md bg-slate-800/80 px-2.5 py-1.5 text-xs font-medium text-slate-300"
                     >
                       {skill}
                     </span>
@@ -68,7 +89,6 @@ export default function About() {
               </div>
             ))}
           </div>
-
         </div>
       </div>
     </section>
